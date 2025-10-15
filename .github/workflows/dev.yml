@@ -1,11 +1,15 @@
 name: Standalone CLI
 on: [push, pull_request]
+
 jobs:
-   machineStandalone:
-      runs-on: ubuntu-latest
-      steps:
-         - uses: actions/checkout@f095bcc56b7c2baf48f3ac70d6d6782f4f553222
-         - uses: docker://docker.io/fluidattacks/sast:latest
-           name: sastStandalone
-           with:
-             args: sast scan WorkFront/tree/main/src
+  machineStandalone:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Fluid Attacks SAST
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/project \
+            fluidattacks/sast:latest \
+            sast scan /project/src
