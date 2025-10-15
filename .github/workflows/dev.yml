@@ -8,4 +8,4 @@ jobs:
          - uses: docker://docker.io/fluidattacks/sast:latest
            name: sastStandalone
            with:
-             args: sast scan WorkFront
+             args: sast scan https://github.com/Leonslp/WorkFront.git
