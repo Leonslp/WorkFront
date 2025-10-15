@@ -10,6 +10,6 @@ jobs:
       - name: Run Fluid Attacks SAST
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/project \
+            -v ${{ github.workspace }}:/WorkFront \
             fluidattacks/sast:latest \
-            sast scan /project/src
+            sast scan /WorkFront/src
